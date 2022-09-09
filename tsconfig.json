@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es2016",                              
+      "module": "commonjs",                                
+        "isolatedModules": false,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
+      "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables                        /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+      "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+   "outDir": "./dist",                                    /* Redirect output structure to the directory. */
+      "strict": false,                                      /* Enable all strict type-checking options. */
+                      /* Skip type checking .d.ts files that are included with TypeScript. */
+      "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    }
+  }
