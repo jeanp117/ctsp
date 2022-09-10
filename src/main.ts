@@ -137,10 +137,12 @@ inquirer
     projectName = projectName.toLowerCase().replace(/ /g, "-");
 
     await fse.mkdirp(`./${projectName}/${distFolder}`);
-    await fse.writeJson(`./${projectName}/tsconfig.json`, createTSConfig());
+    await fse.writeJson(`./${projectName}/tsconfig.json`, createTSConfig(), {
+      spaces: "\t",
+    });
     await fse.mkdirp(`./${projectName}/src`);
-    await fse.writeFile(`./${projectName}/src/${entryPoint}.ts`, "");
-    await fse.appendFile(`./${projectName}/src/${entryPoint}.ts`, `console.log("Hello, world!");`);
+    await fse.writeFile(`./${projectName}/src/${entryPoint}`, "");
+    await fse.appendFile(`./${projectName}/src/${entryPoint}`, `console.log("Hello, world!");`);
 
     if (answers.expressTemplate) {
       await fse.mkdirp(`./${projectName}/src/routes`);
@@ -163,9 +165,9 @@ inquirer
         keywords: [],
         licence: projectLicense,
         scripts: {
-          start: `ts-node ${entryPoint}.ts`,
+          start: `ts-node ${entryPoint}`,
           build: `tsc --build`,
-          dev: `ts-node-dev --clear --respawn --exit-child --watch --transpile-only src/${entryPoint}.ts`,
+          dev: `ts-node-dev --clear --respawn --exit-child --watch --transpile-only src/${entryPoint}`,
         },
         dependencies: (() => {
           let obj = {};
@@ -187,7 +189,9 @@ inquirer
         })(),
       };
     }
-    fse.writeJson(`./${projectName}/package.json`, createPackageJson());
+    fse.writeJson(`./${projectName}/package.json`, createPackageJson(), {
+      spaces: "\t",
+    });
 
     let msg = "Creating TypeScript project...";
 
