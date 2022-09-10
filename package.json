@@ -2,7 +2,7 @@
   "name": "ctsp",
   "displayName": "Create TypeScript Project",
   "description": "A CLI tool to create a NodeJS project with TypeScript",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": "Jean Rodríguez",
   "main": "dist/main.js",
   "repository": {
@@ -29,8 +29,6 @@
   "devDependencies": {
     "@types/inquirer": "^9.0.1",
     "@types/node": "^18.7.16",
-    "@types/typescript": "^2.0.0",
-    "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.8.3"
   },
