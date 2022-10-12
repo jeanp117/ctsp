@@ -17,6 +17,14 @@ CTSP is a CLI tool to make easier to start a new NodeJS project and configure Ty
 
     npm i ctsp -g
 
+## Start development mode
+
+    npm run dev
+
+## Build
+
+    npm run build
+
 ## Create a project
 
 Start CTSP running this on your console.
