@@ -207,7 +207,7 @@ inquirer
 
     let spawASYNC = (command: string, args: Array<string>, options?: any) =>
       new Promise<void>((resolve, reject) => {
-        spawn(command, args, { stdio: "pipe", ...options }).on("close", (code) => {
+        spawn(command, args, { stdio: "pipe", ...options, shell: true }).on("close", (code) => {
           if (code === 0) {
             clearInterval(interval);
             resolve();
