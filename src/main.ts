@@ -6,12 +6,33 @@ const BottomBar = require("inquirer/lib/ui/bottom-bar.js");
 const colors = require("colors");
 const fse = require("fs-extra");
 
+const { OptionParser, Option } = require('./lib/option-parser');
+const { readFileSync } = require('fs');
+const { join } = require('path');
+
 let b64 =
   "ICAgICAgICAgICAgICAgICAgICAgXyAgICAgX19fX18gX19fX19fX19fX18gICAgICAgICAgXyAgICAgICAgICAgXyAgIA0KICAgICAgICAgICAgICAgICAgICB8IHwgICB8XyAgIF8vICBfX198IF9fXyBcICAgICAgICAoXykgICAgICAgICB8IHwgIA0KICBfX18gXyBfXyBfX18gIF9fIF98IHxfIF9fX3wgfCBcIGAtLS58IHxfLyAvIF9fIF9fXyAgXyAgX19fICBfX198IHxfIA0KIC8gX198ICdfXy8gXyBcLyBfYCB8IF9fLyBfIFwgfCAgYC0tLiBcICBfXy8gJ19fLyBfIFx8IHwvIF8gXC8gX198IF9ffA0KfCAoX198IHwgfCAgX18vIChffCB8IHx8ICBfXy8gfCAvXF9fLyAvIHwgIHwgfCB8IChfKSB8IHwgIF9fLyAoX198IHxfIA0KIFxfX198X3wgIFxfX198XF9fLF98XF9fXF9fX1xfLyBcX19fXy9cX3wgIHxffCAgXF9fXy98IHxcX19ffFxfX198XF9ffA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF8vIHwgICAgICAgICAgICAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfF9fLyAgICAgICAgICAgICAgIA==";
 
 console.log(colors.cyan(Buffer.from(b64, "base64").toString("ascii")));
 console.log("\t\t\t\t\t\t\tv1.0.3");
 console.log("\n A CLI tool to create a NodeJS project with TypeScript\n\n");
+
+function printHelp(): void {
+  console.log('Usage: ctsp [options]');
+}
+
+function printVersion(): void {
+  const version = JSON.parse(readFileSync(join(__dirname, '../', 'package.json')).toString()).version;
+  console.log('Version ' + version);
+}
+
+const options = [
+  { command: ['--help', '-h'], callback: printHelp },
+  { command: ['--version', '-v'], callback: printVersion },
+];
+
+const parser = new OptionParser(options);
+parser.exec();
 
 inquirer
   .prompt([
